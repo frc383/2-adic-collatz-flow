@@ -13,7 +13,7 @@ This codebase empirically verifies these algebraic structures up to $2^{45}$ (ap
 Repository Structure
 
 The codebase is separated into core mathematical logic, visualization, and the execution environment:
-
+'''text
 ├── Collatz_Verification_Suite.ipynb  # The main 7-cell execution environment
 ├── computation_engine.py             # Theoretical JIT-compiled logic and L3 cache sieving
 ├── visualization_tools.py            # Visualization and data-formatting
@@ -57,7 +57,7 @@ Executing this parallelized sweep yielded the following bounding data for the en
 
 Maximum Peak Altitude: 9,223,371,995,968,455,082 (Originating seed: 11,390,726,016,927)
 
-Longest Path (Stopping Time):: 949 steps to drop below initial value (Originating seed: 14,616,588,676,251)
+Longest Path (Stopping Time): 949 steps to drop below initial value (Originating seed: 14,616,588,676,251)
 
 Citation
 
