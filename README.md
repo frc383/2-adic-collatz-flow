@@ -6,7 +6,7 @@ This highly optimized Python/CUDA architecture is designed to verify the Collatz
 
 
 
-## ⚡ Performance Highlights
+## Performance Highlights
 * **O(1) Memory Projection Sieve:** Bypasses the von Neumann bottleneck by projecting millions of resolved modulo-residue pairs into a static boolean array in High-Speed VRAM.
 * **Branchless 2-Adic Extraction:** Utilizes LLVM/Numba CUDA Just-In-Time (JIT) compilation to replace interpreted loops with native hardware instructions (e.g., bitwise population counts for instantaneous trailing-zero division).
 * **Massive Parallelism:** Embarrassingly parallel architecture designed to max out NVIDIA Tensor Core GPUs (A100/V100).
@@ -14,7 +14,7 @@ This highly optimized Python/CUDA architecture is designed to verify the Collatz
 
 ---
 
-## 🏗️ Repository Architecture
+## Repository Architecture
 
 The computation is strictly decoupled into two distinct phases to maximize hardware efficiency.
 
@@ -30,12 +30,12 @@ This is the core verification engine. It uses the `pandas` library to map the ge
 
 ---
 
-## 🚀 Installation & Setup
+## Installation & Setup
 
 **Prerequisites:**
 You must have an NVIDIA GPU and the CUDA Toolkit installed on your machine or cloud instance. 
 
 1. **Clone the repository:**
    ```bash
-   git clone [https://github.com/YourUsername/2-adic-collatz-flow.git](https://github.com/YourUsername/2-adic-collatz-flow.git)
+   git clone [[https://github.com/YourUsername/2-adic-collatz-flow.git]([https://github.com/frc383/2-adic-collatz-flow](https://github.com/frc383/2-adic-collatz-flow))](https://[github.com/YourUsername/2-adic-collatz-flow](https://github.com/frc383/2-adic-collatz-flow).git)
    cd 2-adic-collatz-flow
