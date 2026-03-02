@@ -1,5 +1,10 @@
 # 2-Adic Collatz Flow: High-Precision Rational Manifold Tracking
 
+![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)
+![CUDA Supported](https://img.shields.io/badge/CUDA-Supported-76B900?logo=nvidia)
+![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
+![Maintained](https://img.shields.io/badge/Maintained%3F-yes-green.svg)
+
 This repository contains the official computational suite for the paper **"Computational Bounds and Rational Isomorphisms in the 2-Adic Collatz Flow"**. 
 
 This highly optimized Python/CUDA architecture is designed to verify the Collatz (3n+1) conjecture by tracking the strict, continuous accumulation of the 2-adic valuation. Moving beyond traditional brute-force bit-shifting, this suite preserves exact algebraic structures within the dyadic ring and the rational field, enabling High-Precision Rational Manifold Tracking.
