@@ -1,5 +1,4 @@
 # 2-Adic Collatz Flow: High-Precision Rational Manifold Tracking
-
 ![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)
 ![CUDA Supported](https://img.shields.io/badge/CUDA-Supported-76B900?logo=nvidia)
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
@@ -21,26 +20,39 @@ This highly optimized Python/CUDA architecture is designed to verify the Collatz
 
 ## Repository Architecture
 
-The computation is strictly decoupled into two distinct phases to maximize hardware efficiency.
+The computation is driven by a single orchestrated master script: `collatz_cuda_master.py`. 
 
-### 1. The Deep Sieve Generator (`sieve_generator.py`)
-Because the Collatz tree expands exponentially, calculating the breadth-first mathematical sieve is heavily CPU-bound. This script generates a depth k=30 Sieve, calculating which integer branches are mathematically guaranteed to drop below their initial seed within a finite number of steps. 
-* **Output:** Streams results to `resolved_pairs_deep.csv`.
-* **Hardware:** Requires a High-RAM CPU environment (approx. 1 GB RAM utilization).
-
-### 2. The CUDA Apex-Predator Kernel (`cuda_sweeper.py`)
-This is the core verification engine. It uses the `pandas` library to map the generated CSV into a dense 1 GB boolean array, loads it into the GPU's VRAM, and extracts the remaining indeterminate "hard targets." It then fires a massively parallel Numba CUDA grid to simulate the trajectories of the surviving integers.
-* **Hardware:** Requires an NVIDIA GPU (Compute Capability 7.0+, A100 recommended).
-* **Output:** Appends continuous local records to `collatz_cuda_deep_checkpoint.csv`.
+To maximize hardware efficiency, the script features **Smart Orchestration**. Because the breadth-first mathematical sieve is heavily CPU-bound, the script automatically isolates this workload. When executed, it checks for an existing Sieve file:
+* **Phase 1 (Deep Sieve Generator):** If the sieve is missing, it utilizes the host CPU to expand the Collatz tree to depth k=30, saving the mathematically resolved branches to a local CSV. 
+* **Phase 2 (CUDA Apex-Predator Kernel):** Once the Sieve exists, it instantly loads the 1 GB dense array into the GPU's VRAM and fires a massively parallel Numba CUDA grid to simulate the trajectories of the surviving "hard targets."
 
 ---
 
-## Installation & Setup
+**Installation & Setup**
 
-**Prerequisites:**
-You must have an NVIDIA GPU and the CUDA Toolkit installed on your machine or cloud instance. 
+   Prerequisites: You must have an NVIDIA GPU and the CUDA Toolkit installed on your machine or cloud instance.
 
-1. **Clone the repository:**
-   ```bash
-   git clone [[https://github.com/YourUsername/2-adic-collatz-flow.git]([https://github.com/frc383/2-adic-collatz-flow](https://github.com/frc383/2-adic-collatz-flow))](https://[github.com/YourUsername/2-adic-collatz-flow](https://github.com/frc383/2-adic-collatz-flow).git)
+**Clone the repository and enter the directory:**
+
+   ```Bash
+   git clone https://github.com/frc383/2-adic-collatz-flow.git
    cd 2-adic-collatz-flow
+   ```
+**Install the required Python dependencies:**
+   
+   ```Bash
+   pip install -r requirements.txt
+   ```
+(Ensure your Numba installation is correctly detecting your CUDA drivers by running numba -s in your terminal).
+
+**Citation**
+   If you use this architecture or methodology in your research, please cite the original paper:
+
+   ```
+   @article{cortese2026collatz,
+   title={Computational Bounds and Rational Isomorphisms in the 2-Adic Collatz Flow},
+   author={Frank Cortese},
+   year={2026},
+   publisher={Shasta Community College}
+   }
+   ```
